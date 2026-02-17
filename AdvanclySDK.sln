@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvanclySDK", "AdvanclySDK\AdvanclySDK.csproj", "{7953A353-556A-4EBA-BD4F-E7E278A625DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvanclySDKTest", "AdvanclySDKTest\AdvanclySDKTest.csproj", "{8EA87A65-C396-4DE1-A247-5CA58BC0CB4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7953A353-556A-4EBA-BD4F-E7E278A625DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7953A353-556A-4EBA-BD4F-E7E278A625DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7953A353-556A-4EBA-BD4F-E7E278A625DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7953A353-556A-4EBA-BD4F-E7E278A625DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA87A65-C396-4DE1-A247-5CA58BC0CB4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA87A65-C396-4DE1-A247-5CA58BC0CB4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA87A65-C396-4DE1-A247-5CA58BC0CB4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA87A65-C396-4DE1-A247-5CA58BC0CB4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
