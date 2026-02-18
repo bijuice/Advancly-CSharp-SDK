@@ -17,6 +17,7 @@ public class AdvanclySDK : IAdvanclySDK
     public Loans Loans { get; private set; }
     public Customer Customer { get; private set; }
     public VirtualAccount VirtualAccount { get; private set; }
+    public Payout Payout { get; private set; }
 
     public AdvanclySDK(IOptions<AdvanclySDKOptions> options)
     {
@@ -33,6 +34,7 @@ public class AdvanclySDK : IAdvanclySDK
         Loans = new Loans(httpClient);
         Customer = new Customer(httpClient);
         VirtualAccount = new VirtualAccount(httpClient);
+        Payout = new Payout(httpClient);
 
     }
 }
