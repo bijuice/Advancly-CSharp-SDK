@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -16,6 +16,7 @@ public class AdvanclySDK : IAdvanclySDK
     private readonly AdvanclySDKOptions _options;
     public Loans Loans { get; private set; }
     public Customer Customer { get; private set; }
+    public VirtualAccount VirtualAccount { get; private set; }
 
     public AdvanclySDK(IOptions<AdvanclySDKOptions> options)
     {
@@ -31,8 +32,8 @@ public class AdvanclySDK : IAdvanclySDK
 
         Loans = new Loans(httpClient);
         Customer = new Customer(httpClient);
+        VirtualAccount = new VirtualAccount(httpClient);
 
-        Console.WriteLine($"AdvanclySDK initialized with ClientId: {_options.ClientId}, ApiKey: {_options.ApiKey}, ApiUrl: {_options.ApiUrl}");
     }
 }
 
