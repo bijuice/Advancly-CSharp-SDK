@@ -15,6 +15,7 @@ public class AdvanclySDK : IAdvanclySDK
 
     private readonly AdvanclySDKOptions _options;
     public Loans Loans { get; private set; }
+    public Customer Customer { get; private set; }
 
     public AdvanclySDK(IOptions<AdvanclySDKOptions> options)
     {
@@ -29,6 +30,7 @@ public class AdvanclySDK : IAdvanclySDK
         var httpClient = new HttpClient { BaseAddress = new Uri(_options.ApiUrl) };
 
         Loans = new Loans(httpClient);
+        Customer = new Customer(httpClient);
 
         Console.WriteLine($"AdvanclySDK initialized with ClientId: {_options.ClientId}, ApiKey: {_options.ApiKey}, ApiUrl: {_options.ApiUrl}");
     }
