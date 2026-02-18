@@ -19,7 +19,7 @@ public class Loans
             requestBody
         );
 
-        // Ensure success or handle errors before deserializing
+        
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<T>();
@@ -31,7 +31,7 @@ public class Loans
             $"/loans/borrower/{customerId}"
         );
 
-        // Ensure success or handle errors before deserializing
+        
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<GetCustomerLoansResponse>();
@@ -43,7 +43,7 @@ public class Loans
             $"/loans/{loanRefNo}"
         );
 
-        // Ensure success or handle errors before deserializing
+        
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<LoanDetailsResponse>();
@@ -56,7 +56,7 @@ public class Loans
             requestBody
         );
 
-        // Ensure success or handle errors before deserializing
+        
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<RepaymentResponse>();
@@ -69,7 +69,7 @@ public class Loans
             requestBody
         );
 
-        // Ensure success or handle errors before deserializing
+        
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<T>();
@@ -82,7 +82,7 @@ public class Loans
             requestBody
         );
 
-        // Ensure success or handle errors before deserializing
+        
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<T>();
