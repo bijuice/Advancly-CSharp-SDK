@@ -18,6 +18,7 @@ public class AdvanclySDK : IAdvanclySDK
     public Customer Customer { get; private set; }
     public VirtualAccount VirtualAccount { get; private set; }
     public Payout Payout { get; private set; }
+    public Aggregator Aggregator { get; private set; }
 
     public AdvanclySDK(IOptions<AdvanclySDKOptions> options)
     {
@@ -38,6 +39,7 @@ public class AdvanclySDK : IAdvanclySDK
         Customer = new Customer(httpClient);
         VirtualAccount = new VirtualAccount(httpClient);
         Payout = new Payout(httpClient);
+        Aggregator = new Aggregator(httpClient);
 
     }
 }
