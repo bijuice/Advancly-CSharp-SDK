@@ -1,3 +1,5 @@
+namespace AdvanclySDK;
+
 public enum AdvanclyLoanStatus
 {
     SubmittedAwaitingApproval = 100,

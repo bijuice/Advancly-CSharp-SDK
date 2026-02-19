@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class GetAggregatorProductsResponse
 {
     [JsonPropertyName("message")] public string Message { get; set; }

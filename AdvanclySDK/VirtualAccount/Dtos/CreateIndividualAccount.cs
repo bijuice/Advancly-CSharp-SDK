@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class CreateIndividualAccountRequest
 {
     [JsonPropertyName("first_name")] public string FirstName { get; set; }

@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class GenerateLoanScheduleRequest
 {
     [JsonPropertyName("productId")] public int ProductId { get; set; }

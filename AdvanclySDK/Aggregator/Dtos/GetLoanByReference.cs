@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class GetLoanByReferenceRequest
 {
     [JsonPropertyName("aggregator_loan_ref")] public string AggregatorLoanRef { get; set; }

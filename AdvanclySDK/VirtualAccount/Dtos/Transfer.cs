@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class TransferRequest
 {
     [JsonPropertyName("sender_account_number")] public string SenderAccountNumber { get; set; }

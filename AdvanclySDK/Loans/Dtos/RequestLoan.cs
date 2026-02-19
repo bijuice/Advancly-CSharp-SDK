@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class RequestLoanRequest
 {
     [JsonPropertyName("identity_number")] public string IdentityNumber { get; set; }

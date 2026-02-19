@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class NameEnquiryRequest
 {
     [JsonPropertyName("account_number")] public string AccountNumber { get; set; }

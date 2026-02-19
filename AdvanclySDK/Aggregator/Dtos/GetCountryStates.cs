@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class GetCountryStatesRequest
 {
     [JsonPropertyName("aggregator_id")] public string AggregatorId { get; set; }

@@ -1,6 +1,8 @@
 
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class LoanDetailsResponse
 {
     [JsonPropertyName("message")] public string Message { get; set; }

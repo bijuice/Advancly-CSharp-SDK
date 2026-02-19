@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class GetCustomerLoansResponse
 
 {
@@ -19,7 +21,7 @@ public class GetCustomerLoansResponse
 public class GetLoanDetailsData
 {
     [JsonPropertyName("customer")]
-    public Customer Customer { get; set; }
+    public LoanCustomer Customer { get; set; }
 
     [JsonPropertyName("repayment_account")]
     public RepaymentAccount RepaymentAccount { get; set; }
@@ -34,7 +36,7 @@ public class GetLoanDetailsData
     public RepaymentSchedule RepaymentSchedule { get; set; }
 }
 
-public class Customer
+public class LoanCustomer
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
@@ -181,7 +183,7 @@ public class LoanDetails
 public class RepaymentSchedule
 {
     [JsonPropertyName("currency")]
-    public Currency Currency { get; set; }
+    public LoanCurrency Currency { get; set; }
 
     [JsonPropertyName("loanTermInDays")]
     public int LoanTermInDays { get; set; }
@@ -229,7 +231,7 @@ public class RepaymentSchedule
     public List<RepaymentPeriod> Periods { get; set; }
 }
 
-public class Currency
+public class LoanCurrency
 {
     [JsonPropertyName("code")]
     public string Code { get; set; }

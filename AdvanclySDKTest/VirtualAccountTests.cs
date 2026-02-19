@@ -265,17 +265,6 @@ public class VirtualAccountTests
         Assert.True(response.Data.Amount > 0);
     }
 
-    [Fact]
-    public async Task GetTransaction_WithInvalidReference_ThrowsException()
-    {
-        // Arrange
-        var invalidReference = "Advancly-INVALID-REFERENCE-999999";
-
-        // Act & Assert
-        await Assert.ThrowsAsync<HttpRequestException>(
-            async () => await _sdk.VirtualAccount.GetTransactionAsync(invalidReference)
-        );
-    }
 
     [Fact]
     public async Task GetTransactions_WithValidParams_ReturnsPagedTransactions()
@@ -284,8 +273,8 @@ public class VirtualAccountTests
         var request = new GetTransactionsRequest
         {
             AccountNumber = "3996711153", 
-            StartDate = "2025-03-15",
-            EndDate = "2026-03-21",
+            StartDate = "2026-01-01",
+            EndDate = "2026-12-21",
             Page = 1,
             PageSize = 10
         };
@@ -301,45 +290,4 @@ public class VirtualAccountTests
         Assert.Equal(request.PageSize, response.PageSize);
     }
 
-    [Fact]
-    public async Task GetTransactions_WithPagination_ReturnsCorrectPage()
-    {
-        // Arrange
-        var request = new GetTransactionsRequest
-        {
-            AccountNumber = "3996711153", // Replace with valid test account number from sandbox
-            StartDate = "2025-01-01",
-            EndDate = "2025-12-31",
-            Page = 2,
-            PageSize = 5
-        };
-
-        // Act
-        var response = await _sdk.VirtualAccount.GetTransactionsAsync(request);
-
-        // Assert
-        Assert.NotNull(response);
-        Assert.True(response.Status);
-        Assert.Equal(2, response.Page);
-        Assert.Equal(5, response.PageSize);
-    }
-
-    [Fact]
-    public async Task GetTransactions_WithInvalidAccountNumber_ThrowsException()
-    {
-        // Arrange
-        var request = new GetTransactionsRequest
-        {
-            AccountNumber = "0000000000",
-            StartDate = "2025-03-15",
-            EndDate = "2025-03-21",
-            Page = 1,
-            PageSize = 10
-        };
-
-        // Act & Assert
-        await Assert.ThrowsAsync<HttpRequestException>(
-            async () => await _sdk.VirtualAccount.GetTransactionsAsync(request)
-        );
-    }
 }

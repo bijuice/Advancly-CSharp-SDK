@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace AdvanclySDK;
+
 public class CreateCorporateAccountRequest
 {
     [JsonPropertyName("rc_number")] public string RcNumber { get; set; }
