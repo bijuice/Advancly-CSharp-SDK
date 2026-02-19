@@ -50,7 +50,7 @@ public class LoanTests
             AggregatorLoanRef = $"TEST-{Guid.NewGuid().ToString().Substring(0, 8)}",
             BankCode = "058",
             BankAccountNum = "1234567890",
-            BankAccountName = "John Doe",
+            BankAccountName = "Abbey Mortgage Bank",
             CreateWallet = false,
             CustomerCategory = "Salary Earner",
             LoanPurpose = "Business Expansion",

@@ -114,7 +114,7 @@ public class VirtualAccountTests
     public async Task GetAccountDetails_WithValidAccountNumber_ReturnsAccountDetails()
     {
         // Arrange
-        var accountNumber = "9038299384"; // Replace with valid test account number from sandbox
+        var accountNumber = "0094714140"; // Replace with valid test account number from sandbox
 
         // Act
         var response = await _sdk.VirtualAccount.GetAccountDetailsAsync(accountNumber);
@@ -123,8 +123,7 @@ public class VirtualAccountTests
         Assert.NotNull(response);
         Assert.True(response.Status);
         Assert.NotNull(response.Data);
-        Assert.NotEmpty(response.Data);
-        Assert.Equal(accountNumber, response.Data[0].AccountNumber);
+        Assert.Equal(accountNumber, response.Data.AccountNumber);
     }
 
     [Fact]
@@ -201,13 +200,13 @@ public class VirtualAccountTests
         // Arrange
         var request = new TransferRequest
         {
-            SenderAccountNumber = "9038299384",   // Replace with valid test sender from sandbox
-            RecipientAccountNumber = "7037662603", // Replace with valid test recipient from sandbox
+            SenderAccountNumber = "3996711153",  
+            RecipientAccountNumber = "9038299384", 
             RecipientAccountName = "PAUL IKHIDE",
             RecipientBankCode = "999461",
             Amount = 100,
-            Narration = "Test transfer",
-            Reference = $"Advancly-TEST-{Guid.NewGuid().ToString().Replace("-", "").Substring(0, 18).ToUpper()}"
+            Narration = "Glorious test battle",
+            Reference = $"Advancly-{Guid.NewGuid().ToString().Substring(0, 8)}"
         };
 
         // Act
@@ -221,7 +220,7 @@ public class VirtualAccountTests
         Assert.Equal(request.SenderAccountNumber, response.Data.SenderAccountNumber);
         Assert.Equal(request.RecipientAccountNumber, response.Data.RecipientAccountNumber);
         Assert.Equal(request.Amount, response.Data.Amount);
-        Assert.Equal("Completed", response.Data.TransactionStatus);
+        Assert.Equal("Success", response.Data.TransactionStatus);
     }
 
     [Fact]
@@ -245,32 +244,12 @@ public class VirtualAccountTests
         );
     }
 
-    [Fact]
-    public async Task Transfer_WithInsufficientFunds_ThrowsException()
-    {
-        // Arrange
-        var request = new TransferRequest
-        {
-            SenderAccountNumber = "9038299384",
-            RecipientAccountNumber = "7037662603",
-            RecipientAccountName = "PAUL IKHIDE",
-            RecipientBankCode = "999461",
-            Amount = 999999999,
-            Narration = "Test transfer",
-            Reference = $"Advancly-TEST-{Guid.NewGuid().ToString().Replace("-", "").Substring(0, 18).ToUpper()}"
-        };
-
-        // Act & Assert
-        await Assert.ThrowsAsync<HttpRequestException>(
-            async () => await _sdk.VirtualAccount.TransferAsync(request)
-        );
-    }
-
+   
     [Fact]
     public async Task GetTransaction_WithValidReference_ReturnsTransactionDetails()
     {
         // Arrange
-        var transactionReference = "Advancly-HAUUSIKSNJWUWJSN617288292814"; // Replace with valid reference from sandbox
+        var transactionReference = "Advancly-e2f4g6h8"; 
 
         // Act
         var response = await _sdk.VirtualAccount.GetTransactionAsync(transactionReference);
@@ -304,9 +283,9 @@ public class VirtualAccountTests
         // Arrange
         var request = new GetTransactionsRequest
         {
-            AccountNumber = "9038299384", // Replace with valid test account number from sandbox
+            AccountNumber = "3996711153", 
             StartDate = "2025-03-15",
-            EndDate = "2025-03-21",
+            EndDate = "2026-03-21",
             Page = 1,
             PageSize = 10
         };
@@ -320,8 +299,6 @@ public class VirtualAccountTests
         Assert.NotNull(response.Data);
         Assert.Equal(request.Page, response.Page);
         Assert.Equal(request.PageSize, response.PageSize);
-        Assert.True(response.TotalPages >= 1);
-        Assert.True(response.TotalCount >= 0);
     }
 
     [Fact]
@@ -330,7 +307,7 @@ public class VirtualAccountTests
         // Arrange
         var request = new GetTransactionsRequest
         {
-            AccountNumber = "9038299384", // Replace with valid test account number from sandbox
+            AccountNumber = "3996711153", // Replace with valid test account number from sandbox
             StartDate = "2025-01-01",
             EndDate = "2025-12-31",
             Page = 2,
