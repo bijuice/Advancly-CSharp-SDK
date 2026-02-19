@@ -13,10 +13,14 @@ public class Payout
     public async Task<PayoutAccountDetailsResponse> GetAccountDetailsAsync()
     {
         var response = await _httpClient.GetAsync(
-            "/payout/account_details"
+            "payout/account_details"
         );
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<PayoutAccountDetailsResponse>();
     }
@@ -24,10 +28,14 @@ public class Payout
     public async Task<FinancialInstitutionsResponse> GetFinancialInstitutionsAsync()
     {
         var response = await _httpClient.GetAsync(
-            "/payout/financial_institutions"
+            "payout/financial_institutions"
         );
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<FinancialInstitutionsResponse>();
     }
@@ -35,10 +43,14 @@ public class Payout
     public async Task<NameEnquiryResponse> GetNameEnquiryAsync(NameEnquiryRequest request)
     {
         var response = await _httpClient.GetAsync(
-            $"/payout/name_enquiry?account_number={Uri.EscapeDataString(request.AccountNumber)}&bank_code={Uri.EscapeDataString(request.BankCode)}"
+            $"payout/name_enquiry?account_number={Uri.EscapeDataString(request.AccountNumber)}&bank_code={Uri.EscapeDataString(request.BankCode)}"
         );
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<NameEnquiryResponse>();
     }
@@ -46,11 +58,15 @@ public class Payout
     public async Task<TransferResponse> PayoutAsync(TransferRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "/payout/payout",
+            "payout/payout",
             requestBody
         );
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<TransferResponse>();
     }
@@ -58,10 +74,14 @@ public class Payout
     public async Task<GetTransactionResponse> GetTransactionAsync(string transactionReference)
     {
         var response = await _httpClient.GetAsync(
-            $"/payout/transaction/{Uri.EscapeDataString(transactionReference)}"
+            $"payout/transaction/{Uri.EscapeDataString(transactionReference)}"
         );
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<GetTransactionResponse>();
     }
@@ -69,10 +89,14 @@ public class Payout
     public async Task<GetTransactionsResponse> GetTransactionsAsync(GetTransactionsRequest request)
     {
         var response = await _httpClient.GetAsync(
-            $"/payout/transactions?account_number={Uri.EscapeDataString(request.AccountNumber)}&start_date={Uri.EscapeDataString(request.StartDate)}&end_date={Uri.EscapeDataString(request.EndDate)}&page={request.Page}&page_size={request.PageSize}"
+            $"payout/transactions?account_number={Uri.EscapeDataString(request.AccountNumber)}&start_date={Uri.EscapeDataString(request.StartDate)}&end_date={Uri.EscapeDataString(request.EndDate)}&page={request.Page}&page_size={request.PageSize}"
         );
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<GetTransactionsResponse>();
     }

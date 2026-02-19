@@ -15,24 +15,32 @@ public class Loans
     public async Task<T> InitiateLoanApplicationAsync<T>(InitiateLoanApplicationRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "/loans/onboardcustomer_loanrequest",
+            "loans/onboardcustomer_loanrequest",
             requestBody
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
-        return await response.Content.ReadFromJsonAsync<T>();
+        var content = await response.Content.ReadFromJsonAsync<T>();
+
+        return content;
     }
 
     public async Task<GetCustomerLoansResponse> GetCustomerLoansAsync(string customerId)
     {
         var response = await _httpClient.GetAsync(
-            $"/loans/borrower/{customerId}"
+            $"loans/borrower/{customerId}"
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<GetCustomerLoansResponse>();
     }
@@ -40,11 +48,14 @@ public class Loans
     public async Task<LoanDetailsResponse> GetLoanDetailsAsync<LoanDetailsResponse>(string loanRefNo)
     {
         var response = await _httpClient.GetAsync(
-            $"/loans/{loanRefNo}"
+            $"loans/{loanRefNo}"
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<LoanDetailsResponse>();
     }
@@ -52,12 +63,15 @@ public class Loans
     public async Task<RepaymentResponse> InitiateRepaymentAsync(InitiateRepaymentRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "/loans/initiate_repayment",
+            "loans/initiate_repayment",
             requestBody
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<RepaymentResponse>();
     }
@@ -65,12 +79,15 @@ public class Loans
     public async Task<T> GenerateLoanScheduleAsync<T>(GenerateLoanScheduleRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "/loans/generate_loan_schedule",
+            "loans/generate_loan_schedule",
             requestBody
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<T>();
     }
@@ -78,12 +95,15 @@ public class Loans
     public async Task<T> RequestLoanAsync<T>(RequestLoanRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "/loans/request_loan",
+            "loans/request_loan",
             requestBody
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<T>();
     }

@@ -16,12 +16,15 @@ public class Customer
     public async Task<T> OnboardIndividualCustomerAsync<T>(OnboardIndividualCustomerRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "/customers/onboard_individual",
+            "customers/onboard_individual",
             requestBody
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<T>();
     }
@@ -29,12 +32,15 @@ public class Customer
     public async Task<T> OnboardCorporateCustomerAsync<T>(OnboardCorporateCustomerRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "/customers/onboard_corporate",
+            "customers/onboard_corporate",
             requestBody
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<T>();
     }
@@ -55,11 +61,14 @@ public class Customer
         var queryString = queryParams.Count > 0 ? "?" + string.Join("&", queryParams) : "";
 
         var response = await _httpClient.GetAsync(
-            $"/customers{queryString}"
+            $"customers{queryString}"
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<GetCustomerResponse>();
     }
@@ -67,12 +76,15 @@ public class Customer
     public async Task<LoadCustomerStockDataResponse> LoadCustomerStockDataAsync(LoadCustomerStockDataRequest requestBody, string customerId)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            $"/customers/data/stock?customer_id={Uri.EscapeDataString(customerId)}",
+            $"customers/data/stock?customer_id={Uri.EscapeDataString(customerId)}",
             requestBody
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<LoadCustomerStockDataResponse>();
     }
@@ -80,12 +92,15 @@ public class Customer
     public async Task<LoadCustomerOrdersDataResponse> LoadCustomerOrdersDataAsync(LoadCustomerOrdersDataRequest requestBody, string customerId)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            $"/customers/data/orders?customer_id={Uri.EscapeDataString(customerId)}",
+            $"customers/data/orders?customer_id={Uri.EscapeDataString(customerId)}",
             requestBody
         );
 
-        
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
 
         return await response.Content.ReadFromJsonAsync<LoadCustomerOrdersDataResponse>();
     }

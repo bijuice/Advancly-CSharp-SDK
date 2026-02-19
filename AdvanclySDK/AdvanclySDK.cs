@@ -29,7 +29,10 @@ public class AdvanclySDK : IAdvanclySDK
             throw new ArgumentException("ApiKey is required", nameof(options));
 
 
-        var httpClient = new HttpClient { BaseAddress = new Uri(_options.ApiUrl) };
+        var httpClient = new HttpClient { BaseAddress = new Uri(_options.ApiUrl.TrimEnd('/') + "/") };
+
+        httpClient.DefaultRequestHeaders.Add("client-id", _options.ClientId);
+        httpClient.DefaultRequestHeaders.Add("api-key", _options.ApiKey);
 
         Loans = new Loans(httpClient);
         Customer = new Customer(httpClient);
