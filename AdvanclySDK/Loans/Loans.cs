@@ -15,7 +15,7 @@ public class Loans
     public async Task<T> InitiateLoanApplicationAsync<T>(InitiateLoanApplicationRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "loans/onboardcustomer_loanrequest",
+            "api/v2/client/loans/onboardcustomer_loanrequest",
             requestBody
         );
 
@@ -33,7 +33,7 @@ public class Loans
     public async Task<GetCustomerLoansResponse> GetCustomerLoansAsync(string customerId)
     {
         var response = await _httpClient.GetAsync(
-            $"loans/borrower/{customerId}"
+            $"api/v2/client/loans/borrower/{customerId}"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -48,7 +48,7 @@ public class Loans
     public async Task<LoanDetailsResponse> GetLoanDetailsAsync<LoanDetailsResponse>(string loanRefNo)
     {
         var response = await _httpClient.GetAsync(
-            $"loans/{loanRefNo}"
+            $"api/v2/client/loans/{loanRefNo}"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -63,7 +63,7 @@ public class Loans
     public async Task<RepaymentResponse> InitiateRepaymentAsync(InitiateRepaymentRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "loans/initiate_repayment",
+            "api/v2/client/loans/initiate_repayment",
             requestBody
         );
 
@@ -79,7 +79,7 @@ public class Loans
     public async Task<T> GenerateLoanScheduleAsync<T>(GenerateLoanScheduleRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "loans/generate_loan_schedule",
+            "api/v2/client/loans/generate_loan_schedule",
             requestBody
         );
 
@@ -95,7 +95,7 @@ public class Loans
     public async Task<T> RequestLoanAsync<T>(RequestLoanRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "loans/request_loan",
+            "api/v2/client/loans/request_loan",
             requestBody
         );
 

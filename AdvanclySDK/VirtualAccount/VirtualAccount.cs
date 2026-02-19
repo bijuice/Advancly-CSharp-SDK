@@ -14,7 +14,7 @@ public class VirtualAccount
     public async Task<CreateAccountResponse> CreateIndividualAccountAsync(CreateIndividualAccountRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "wallet/individual/create",
+            "api/v2/client/wallet/individual/create",
             requestBody
         );
 
@@ -30,7 +30,7 @@ public class VirtualAccount
     public async Task<CreateAccountResponse> CreateCorporateAccountAsync(CreateCorporateAccountRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "wallet/corporate/create",
+            "api/v2/client/wallet/corporate/create",
             requestBody
         );
 
@@ -46,7 +46,7 @@ public class VirtualAccount
     public async Task<AccountDetailsResponse> GetAccountDetailsAsync(string accountNumber)
     {
         var response = await _httpClient.GetAsync(
-            $"wallet?account_number={Uri.EscapeDataString(accountNumber)}"
+            $"api/v2/client/wallet?account_number={Uri.EscapeDataString(accountNumber)}"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -61,7 +61,7 @@ public class VirtualAccount
     public async Task<FinancialInstitutionsResponse> GetFinancialInstitutionsAsync()
     {
         var response = await _httpClient.GetAsync(
-            "wallet/financial_institutions"
+            "api/v2/client/wallet/financial_institutions"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -76,7 +76,7 @@ public class VirtualAccount
     public async Task<NameEnquiryResponse> GetNameEnquiryAsync(NameEnquiryRequest request)
     {
         var response = await _httpClient.GetAsync(
-            $"wallet/name_enquiry?account_number={Uri.EscapeDataString(request.AccountNumber)}&bank_code={Uri.EscapeDataString(request.BankCode)}"
+            $"api/v2/client/wallet/name_enquiry?account_number={Uri.EscapeDataString(request.AccountNumber)}&bank_code={Uri.EscapeDataString(request.BankCode)}"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -91,7 +91,7 @@ public class VirtualAccount
     public async Task<TransferResponse> TransferAsync(TransferRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "wallet/transfer",
+            "api/v2/client/wallet/transfer",
             requestBody
         );
 
@@ -107,7 +107,7 @@ public class VirtualAccount
     public async Task<GetTransactionResponse> GetTransactionAsync(string transactionReference)
     {
         var response = await _httpClient.GetAsync(
-            $"wallet/transaction/{Uri.EscapeDataString(transactionReference)}"
+            $"api/v2/client/wallet/transaction/{Uri.EscapeDataString(transactionReference)}"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -122,7 +122,7 @@ public class VirtualAccount
     public async Task<GetTransactionsResponse> GetTransactionsAsync(GetTransactionsRequest request)
     {
         var response = await _httpClient.GetAsync(
-            $"wallet/transactions?account_number={Uri.EscapeDataString(request.AccountNumber)}&start_date={Uri.EscapeDataString(request.StartDate)}&end_date={Uri.EscapeDataString(request.EndDate)}&page={request.Page}&page_size={request.PageSize}"
+            $"api/v2/client/wallet/transactions?account_number={Uri.EscapeDataString(request.AccountNumber)}&start_date={Uri.EscapeDataString(request.StartDate)}&end_date={Uri.EscapeDataString(request.EndDate)}&page={request.Page}&page_size={request.PageSize}"
         );
 
         if (!response.IsSuccessStatusCode)

@@ -10,13 +10,7 @@ public class VirtualAccountTests
 
     public VirtualAccountTests()
     {
-        _options = Options.Create(new AdvanclySDKOptions
-        {
-            ClientId = "your-client-id",
-            ApiKey = "your-api-key",
-            ApiUrl = "https://api-sandbox.advancly.com/api/v2/client"
-        });
-
+        _options = TestSettings.LoadOptions();
         _sdk = new AdvanclySDK.AdvanclySDK(_options);
     }
 

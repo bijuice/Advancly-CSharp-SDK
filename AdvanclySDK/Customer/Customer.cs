@@ -16,7 +16,7 @@ public class Customer
     public async Task<T> OnboardIndividualCustomerAsync<T>(OnboardIndividualCustomerRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "customers/onboard_individual",
+            "api/v2/client/customers/onboard_individual",
             requestBody
         );
 
@@ -32,7 +32,7 @@ public class Customer
     public async Task<T> OnboardCorporateCustomerAsync<T>(OnboardCorporateCustomerRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "customers/onboard_corporate",
+            "api/v2/client/customers/onboard_corporate",
             requestBody
         );
 
@@ -61,7 +61,7 @@ public class Customer
         var queryString = queryParams.Count > 0 ? "?" + string.Join("&", queryParams) : "";
 
         var response = await _httpClient.GetAsync(
-            $"customers{queryString}"
+            $"api/v2/client/customers{queryString}"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -76,7 +76,7 @@ public class Customer
     public async Task<LoadCustomerStockDataResponse> LoadCustomerStockDataAsync(LoadCustomerStockDataRequest requestBody, string customerId)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            $"customers/data/stock?customer_id={Uri.EscapeDataString(customerId)}",
+            $"api/v2/client/customers/data/stock?customer_id={Uri.EscapeDataString(customerId)}",
             requestBody
         );
 
@@ -92,7 +92,7 @@ public class Customer
     public async Task<LoadCustomerOrdersDataResponse> LoadCustomerOrdersDataAsync(LoadCustomerOrdersDataRequest requestBody, string customerId)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            $"customers/data/orders?customer_id={Uri.EscapeDataString(customerId)}",
+            $"api/v2/client/customers/data/orders?customer_id={Uri.EscapeDataString(customerId)}",
             requestBody
         );
 

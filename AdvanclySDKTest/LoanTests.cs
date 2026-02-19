@@ -11,13 +11,7 @@ public class LoanTests
 
     public LoanTests()
     {
-        _options = Options.Create(new AdvanclySDKOptions
-        {
-            ClientId = "your-client-id",
-            ApiKey = "your-api-key",
-            ApiUrl = "https://api-sandbox.advancly.com/api/v2/client"
-        });
-
+        _options = TestSettings.LoadOptions();
         _sdk = new AdvanclySDK.AdvanclySDK(_options);
     }
 
@@ -45,7 +39,7 @@ public class LoanTests
             Gender = "male",
             PhoneNumber = "+2348012345678",
             Email = "johndoe@example.com",
-            BorrowerType = 1, // Individual
+            BorrowerType = 1, 
             DateOfBirth = "1990-01-01",
             State = "Lagos",
             City = "Lagos",
@@ -62,7 +56,7 @@ public class LoanTests
             LoanPurpose = "Business Expansion",
             AnnualInterestRate = "15.5",
             LoanAmount = 50000,
-            LoanTenure = 6
+            LoanTenure = 30
         };
 
         // Act
@@ -70,7 +64,6 @@ public class LoanTests
 
         // Assert
         Assert.NotNull(response);
-        // Add more specific assertions based on your API response structure
     }
 
     [Fact]
