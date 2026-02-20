@@ -2,6 +2,10 @@ using System.Text.Json.Serialization;
 
 namespace AdvanclySDK;
 
+/// <summary>
+/// Query parameters for retrieving a customer's profile.
+/// GET /api/v2/client/customers
+/// </summary>
 public class GetCustomerRequest
 {
     /// <summary>
