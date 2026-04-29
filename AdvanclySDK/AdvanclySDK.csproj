@@ -11,8 +11,8 @@
         <Authors>Abdul Rahman Rehmtulla</Authors>
         <Description>Official .NET SDK for the Advancly API. Provides strongly-typed clients for Customers, Loans, Virtual Accounts, Payouts, and Aggregator operations.</Description>
         <PackageTags>advancly;fintech;loans;virtual-account;payout;sdk</PackageTags>
-        <PackageProjectUrl>https://github.com/advancly/AdvanclySDK</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/advancly/AdvanclySDK</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/bijuice/Advancly-CSharp-SDK</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/bijuice/Advancly-CSharp-SDK</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
