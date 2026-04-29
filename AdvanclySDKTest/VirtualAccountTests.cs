@@ -123,7 +123,7 @@ public class VirtualAccountTests
         Assert.NotNull(response);
         Assert.True(response.Status);
         Assert.NotNull(response.Data);
-        Assert.Equal(accountNumber, response.Data.AccountNumber);
+        Assert.Equal(accountNumber, response.Data[0].AccountNumber);
     }
 
     [Fact]
