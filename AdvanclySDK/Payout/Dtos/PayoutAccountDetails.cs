@@ -21,7 +21,7 @@ public class PayoutAccountDetailsResponse
     /// <summary>
     /// The HTTP status code of the response.
     /// </summary>
-    [JsonPropertyName("status_code")] public int StatusCode { get; set; }
+    [JsonPropertyName("status_code")] public int Status_Code { get; set; }
 
     /// <summary>
     /// The list of payout accounts associated with the aggregator.

@@ -13,7 +13,7 @@ public class Payout
     public async Task<PayoutAccountDetailsResponse> GetAccountDetailsAsync()
     {
         var response = await _httpClient.GetAsync(
-            "payout/account_details"
+            "api/v2/client/payout/account_details"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -28,7 +28,7 @@ public class Payout
     public async Task<FinancialInstitutionsResponse> GetFinancialInstitutionsAsync()
     {
         var response = await _httpClient.GetAsync(
-            "payout/financial_institutions"
+            "api/v2/client/payout/financial_institutions"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -43,7 +43,7 @@ public class Payout
     public async Task<NameEnquiryResponse> GetNameEnquiryAsync(NameEnquiryRequest request)
     {
         var response = await _httpClient.GetAsync(
-            $"payout/name_enquiry?account_number={Uri.EscapeDataString(request.AccountNumber)}&bank_code={Uri.EscapeDataString(request.BankCode)}"
+            $"api/v2/client/payout/name_enquiry?account_number={Uri.EscapeDataString(request.AccountNumber)}&bank_code={Uri.EscapeDataString(request.BankCode)}"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -58,7 +58,7 @@ public class Payout
     public async Task<TransferResponse> PayoutAsync(TransferRequest requestBody)
     {
         var response = await _httpClient.PostAsJsonAsync(
-            "payout/payout",
+            "api/v2/client/payout/payout",
             requestBody
         );
 
@@ -74,7 +74,7 @@ public class Payout
     public async Task<GetTransactionResponse> GetTransactionAsync(string transactionReference)
     {
         var response = await _httpClient.GetAsync(
-            $"payout/transaction/{Uri.EscapeDataString(transactionReference)}"
+            $"api/v2/client/payout/transaction/{Uri.EscapeDataString(transactionReference)}"
         );
 
         if (!response.IsSuccessStatusCode)
@@ -89,7 +89,7 @@ public class Payout
     public async Task<GetTransactionsResponse> GetTransactionsAsync(GetTransactionsRequest request)
     {
         var response = await _httpClient.GetAsync(
-            $"payout/transactions?account_number={Uri.EscapeDataString(request.AccountNumber)}&start_date={Uri.EscapeDataString(request.StartDate)}&end_date={Uri.EscapeDataString(request.EndDate)}&page={request.Page}&page_size={request.PageSize}"
+            $"api/v2/client/payout/transactions?account_number={Uri.EscapeDataString(request.AccountNumber)}&start_date={Uri.EscapeDataString(request.StartDate)}&end_date={Uri.EscapeDataString(request.EndDate)}&page={request.Page}&page_size={request.PageSize}"
         );
 
         if (!response.IsSuccessStatusCode)

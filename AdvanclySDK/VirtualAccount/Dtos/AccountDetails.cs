@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace AdvanclySDK;
@@ -21,12 +23,12 @@ public class AccountDetailsResponse
     /// <summary>
     /// The HTTP status code of the response.
     /// </summary>
-    [JsonPropertyName("status_code")] public int StatusCode { get; set; }
+    [JsonPropertyName("status_code")] public int Status_Code { get; set; }
 
     /// <summary>
-    /// The virtual account details data payload.
+    /// The list of virtual account details data payloads.
     /// </summary>
-    [JsonPropertyName("data")] public AccountDetailsData Data { get; set; }
+    [JsonPropertyName("data")] public List<AccountDetailsData> Data { get; set; }
 }
 
 /// <summary>

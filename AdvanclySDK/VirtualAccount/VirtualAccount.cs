@@ -43,6 +43,22 @@ public class VirtualAccount
         return await response.Content.ReadFromJsonAsync<CreateAccountResponse>();
     }
 
+    public async Task<CreateDynamicAccountResponse> CreateDynamicAccountAsync(CreateDynamicAccountRequest requestBody)
+    {
+        var response = await _httpClient.PostAsJsonAsync(
+            "api/v2/client/wallet/dynamic/generate",
+            requestBody
+        );
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}: {errorContent}");
+        }
+
+        return await response.Content.ReadFromJsonAsync<CreateDynamicAccountResponse>();
+    }
+
     public async Task<AccountDetailsResponse> GetAccountDetailsAsync(string accountNumber)
     {
         var response = await _httpClient.GetAsync(
