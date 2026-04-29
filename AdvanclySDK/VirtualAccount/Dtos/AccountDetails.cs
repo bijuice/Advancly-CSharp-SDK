@@ -23,7 +23,7 @@ public class AccountDetailsResponse
     /// <summary>
     /// The HTTP status code of the response.
     /// </summary>
-    [JsonPropertyName("status_code")] public int Status_Code { get; set; }
+    [JsonPropertyName("status_code")] public int StatusCode { get; set; }
 
     /// <summary>
     /// The list of virtual account details data payloads.
